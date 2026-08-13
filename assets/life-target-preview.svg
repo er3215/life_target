@@ -1,0 +1,121 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" fill="#F4F7FB"/>
+
+  <rect x="125" y="45" width="950" height="170" rx="14" fill="#FFFFFF" stroke="#D8EAFB"/>
+  <text x="600" y="98" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" fill="#1F2B3D">人生成就與里程碑日誌</text>
+  <text x="600" y="136" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#64748B">設定你想完成目標的目標歲數，把時間變成實現夢想的倒數。</text>
+
+  <rect x="430" y="155" width="340" height="34" rx="8" fill="#F5F7FB" stroke="#D7E5F6"/>
+  <text x="455" y="178" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#3a4a5d">選擇生日</text>
+  <text x="620" y="178" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#2F3B52">1995/01/01</text>
+  <rect x="543" y="195" width="130" height="30" rx="15" fill="#FFFFFF" stroke="#D7E5F6"/>
+  <text x="608" y="216" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#3F4D63">匯出設定</text>
+  <rect x="697" y="195" width="130" height="30" rx="15" fill="#FFFFFF" stroke="#D7E5F6"/>
+  <text x="762" y="216" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#3F4D63">匯入設定</text>
+
+  <rect x="125" y="240" width="950" height="120" rx="14" fill="#FFFFFF" stroke="#D8EAFB"/>
+  <circle cx="178" cy="278" r="10" fill="#2D7FF9"/>
+  <text x="198" y="284" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#1F2B3D">新增成就目標</text>
+
+  <rect x="145" y="300" width="560" height="40" rx="10" fill="#F6F9FC" stroke="#CFE3F9"/>
+  <text x="170" y="325" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#98A3B5">想要完成的成就</text>
+  <rect x="735" y="300" width="180" height="40" rx="10" fill="#F6F9FC" stroke="#CFE3F9"/>
+  <text x="770" y="325" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#98A3B5">期待歲數</text>
+  <rect x="930" y="300" width="110" height="40" rx="10" fill="#4A97FF"/>
+  <text x="985" y="325" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF">加入目標</text>
+
+  <rect x="125" y="390" width="455" height="110" rx="12" fill="#FFFFFF" stroke="#D8EAFB"/>
+  <text x="168" y="430" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#64748B">已度過週數</text>
+  <text x="168" y="470" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="700" fill="#1F2B3D">1,649</text>
+  <text x="168" y="495" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#64748B">還有 2,511 週</text>
+
+  <rect x="620" y="390" width="455" height="110" rx="12" fill="#FFFFFF" stroke="#D8EAFB"/>
+  <text x="660" y="430" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#64748B">人生進度（至80歲）</text>
+  <text x="660" y="470" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="700" fill="#1F2B3D">39.6%</text>
+
+  <text x="145" y="560" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#3a4a5d">當前歲數</text>
+  <rect x="138" y="580" width="937" height="150" rx="14" fill="#FFFFFF" stroke="#2A8CFF"/>
+  <text x="178" y="628" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" fill="#1F2B3D">31 歲</text>
+  <rect x="285" y="610" width="52" height="24" rx="12" fill="#1F6BFF"/>
+  <text x="311" y="627" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#FFFFFF">目前</text>
+  <text x="742" y="628" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#1F2B3D">71%</text>
+  <rect x="790" y="610" width="180" height="10" rx="5" fill="#E2E8F0"/>
+  <rect x="790" y="610" width="128" height="10" rx="5" fill="#2A8CFF"/>
+
+  <g opacity="0.85">
+    <circle cx="170" cy="680" r="8" fill="#4B5563"/>
+    <circle cx="192" cy="680" r="8" fill="#4B5563"/>
+    <circle cx="214" cy="680" r="8" fill="#4B5563"/>
+    <circle cx="236" cy="680" r="8" fill="#4B5563"/>
+    <circle cx="258" cy="680" r="8" fill="#4B5563"/>
+    <circle cx="280" cy="680" r="8" fill="#4B5563"/>
+    <circle cx="302" cy="680" r="8" fill="#4B5563"/>
+    <circle cx="324" cy="680" r="8" fill="#4B5563"/>
+    <circle cx="346" cy="680" r="8" fill="#4B5563"/>
+    <circle cx="368" cy="680" r="8" fill="#4B5563"/>
+    <circle cx="390" cy="680" r="8" fill="#4B5563"/>
+    <circle cx="412" cy="680" r="8" fill="#4B5563"/>
+    <circle cx="434" cy="680" r="8" fill="#4B5563"/>
+    <circle cx="456" cy="680" r="8" fill="#4B5563"/>
+    <circle cx="478" cy="680" r="8" fill="#4B5563"/>
+    <circle cx="500" cy="680" r="8" fill="#4B5563"/>
+    <circle cx="522" cy="680" r="8" fill="#4B5563"/>
+    <circle cx="544" cy="680" r="8" fill="#4B5563"/>
+    <circle cx="566" cy="680" r="8" fill="#4B5563"/>
+    <circle cx="588" cy="680" r="8" fill="#4B5563"/>
+    <circle cx="610" cy="680" r="8" fill="#4B5563"/>
+    <circle cx="632" cy="680" r="8" fill="#4B5563"/>
+    <circle cx="654" cy="680" r="8" fill="#4B5563"/>
+    <circle cx="676" cy="680" r="8" fill="#4B5563"/>
+    <circle cx="698" cy="680" r="8" fill="#4B5563"/>
+    <circle cx="720" cy="680" r="8" fill="#4B5563"/>
+    <circle cx="742" cy="680" r="8" fill="#4B5563"/>
+    <circle cx="764" cy="680" r="8" fill="#4B5563"/>
+    <circle cx="786" cy="680" r="8" fill="#4B5563"/>
+    <circle cx="808" cy="680" r="8" fill="#4B5563"/>
+    <circle cx="830" cy="680" r="8" fill="#4B5563"/>
+    <circle cx="852" cy="680" r="8" fill="#4B5563"/>
+    <circle cx="874" cy="680" r="8" fill="#4B5563"/>
+    <circle cx="896" cy="680" r="8" fill="#4B5563"/>
+    <circle cx="918" cy="680" r="8" fill="#4B5563"/>
+    <circle cx="940" cy="680" r="8" fill="#4B5563"/>
+    <circle cx="962" cy="680" r="8" fill="#4B5563"/>
+  </g>
+
+  <g>
+    <circle cx="170" cy="680" r="8" fill="#E5EDF9"/>
+    <circle cx="192" cy="680" r="8" fill="#E5EDF9"/>
+    <circle cx="214" cy="680" r="8" fill="#E5EDF9"/>
+    <circle cx="236" cy="680" r="8" fill="#E5EDF9"/>
+    <circle cx="258" cy="680" r="8" fill="#E5EDF9"/>
+    <circle cx="280" cy="680" r="8" fill="#E5EDF9"/>
+    <circle cx="302" cy="680" r="8" fill="#E5EDF9"/>
+    <circle cx="324" cy="680" r="8" fill="#E5EDF9"/>
+    <circle cx="346" cy="680" r="8" fill="#E5EDF9"/>
+    <circle cx="368" cy="680" r="8" fill="#E5EDF9"/>
+    <circle cx="390" cy="680" r="8" fill="#E5EDF9"/>
+    <circle cx="412" cy="680" r="8" fill="#E5EDF9"/>
+    <circle cx="434" cy="680" r="8" fill="#E5EDF9"/>
+    <circle cx="456" cy="680" r="8" fill="#E5EDF9"/>
+    <circle cx="478" cy="680" r="8" fill="#E5EDF9"/>
+    <circle cx="500" cy="680" r="8" fill="#E5EDF9"/>
+    <circle cx="522" cy="680" r="8" fill="#E5EDF9"/>
+    <circle cx="544" cy="680" r="8" fill="#E5EDF9"/>
+    <circle cx="566" cy="680" r="8" fill="#E5EDF9"/>
+    <circle cx="588" cy="680" r="8" fill="#E5EDF9"/>
+    <circle cx="610" cy="680" r="8" fill="#FF5A5F"/>
+  </g>
+
+  <text x="138" y="785" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#64748B">未來歲月（標有</text>
+  <circle cx="282" cy="780" r="7" fill="#FF5A5F"/>
+  <text x="294" y="785" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#64748B">代表設定了成就目標）</text>
+
+  <rect x="138" y="800" width="176" height="68" rx="10" fill="#FFFFFF" stroke="#CFE3F9"/>
+  <text x="180" y="835" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#2D7FF9">32 歲</text>
+  <rect x="338" y="800" width="176" height="68" rx="10" fill="#FFFFFF" stroke="#CFE3F9"/>
+  <text x="379" y="835" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#2D7FF9">33 歲</text>
+  <rect x="538" y="800" width="176" height="68" rx="10" fill="#FFFFFF" stroke="#CFE3F9"/>
+  <text x="580" y="835" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#2D7FF9">34 歲</text>
+  <rect x="738" y="800" width="176" height="68" rx="10" fill="#EFF6FF" stroke="#A9C8FF"/>
+  <text x="792" y="835" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#2D7FF9">35 歲</text>
+</svg>
