@@ -69,6 +69,33 @@
             padding: 6px 14px;
             border-radius: 20px;
             border: 1px solid var(--border-color);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .settings-actions {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 14px;
+            flex-wrap: wrap;
+        }
+
+        .btn-import-export {
+            border: 1px solid var(--border-color);
+            background: #fff;
+            color: var(--text-primary);
+            border-radius: 999px;
+            padding: 8px 14px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-import-export:hover {
+            border-color: var(--accent-target-border);
+            background: #f8fbff;
         }
 
         input[type="date"] {
@@ -498,6 +525,11 @@
             <label for="birthdate" style="font-size:0.85rem; color: var(--text-muted);">選擇生日</label>
             <input type="date" id="birthdate" onchange="updateView()">
         </div>
+        <div class="settings-actions">
+            <button class="btn-import-export" onclick="exportSettings()">匯出設定</button>
+            <button class="btn-import-export" onclick="document.getElementById('import-settings-file').click()">匯入設定</button>
+            <input type="file" id="import-settings-file" accept="application/json,.json" hidden onchange="importSettingsFromFile(event)">
+        </div>
     </div>
 
     <!-- 成就目標新增區域 -->
@@ -576,17 +608,79 @@
         localStorage.setItem("user_milestones", JSON.stringify(milestones));
     }
 
-    function normalizeMilestones() {
-        milestones = milestones
+    function getNormalizedMilestones(items) {
+        return (Array.isArray(items) ? items : [])
             .map((item, index) => ({
-                id: item.id || `milestone-${item.age}-${index}-${String(item.title || '').slice(0, 12).replace(/\s+/g, '-')}`,
-                age: Number(item.age),
-                title: String(item.title || '').trim()
+                id: item && item.id ? item.id : `milestone-${item && item.age !== undefined ? item.age : index}-${index}-${String(item && item.title ? item.title : '').slice(0, 12).replace(/\s+/g, '-')}`,
+                age: Number(item && item.age),
+                title: String(item && item.title ? item.title : '').trim()
             }))
             .filter(item => !isNaN(item.age) && item.age >= 0 && item.age <= 80 && item.title);
+    }
 
+    function normalizeMilestones() {
+        milestones = getNormalizedMilestones(milestones);
         milestones.sort((a, b) => a.age - b.age || a.title.localeCompare(b.title));
         saveMilestones();
+    }
+
+    function exportSettings() {
+        const payload = {
+            version: 1,
+            exportedAt: new Date().toISOString(),
+            birthdate: document.getElementById("birthdate").value || localStorage.getItem("user_birthdate") || "",
+            milestones
+        };
+
+        const blob = new Blob([JSON.stringify(payload, null, 2)], {
+            type: "application/json;charset=utf-8;"
+        });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = "life-target-settings.json";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+    }
+
+    async function importSettingsFromFile(event) {
+        const file = event.target.files && event.target.files[0];
+        if (!file) return;
+
+        try {
+            const text = await file.text();
+            const parsed = JSON.parse(text);
+            const source = parsed && parsed.settings ? parsed.settings : parsed;
+            const nextBirthdate = typeof source.birthdate === "string" ? source.birthdate : "";
+            const incomingMilestones = getNormalizedMilestones(source.milestones || source.targets || source.goals || []);
+
+            if (!nextBirthdate || !/^\d{4}-\d{2}-\d{2}$/.test(nextBirthdate)) {
+                throw new Error("匯入檔案中的生日格式不正確。");
+            }
+            if (incomingMilestones.length === 0) {
+                throw new Error("匯入檔案中沒有可用的成就目標。");
+            }
+
+            localStorage.setItem("user_birthdate", nextBirthdate);
+            milestones = incomingMilestones;
+            milestones.sort((a, b) => a.age - b.age || a.title.localeCompare(b.title));
+            saveMilestones();
+            document.getElementById("birthdate").value = nextBirthdate;
+            expandedAge = null;
+            isEditMode = false;
+            const btn = document.getElementById("toggle-edit-btn");
+            btn.textContent = "編輯成就";
+            btn.classList.remove("active");
+            document.querySelector(".app-container").classList.remove("editing");
+            updateView();
+            alert("設定已成功匯入！");
+        } catch (error) {
+            alert(`匯入失敗：${error.message || "檔案格式不正確"}`);
+        } finally {
+            event.target.value = "";
+        }
     }
 
     function addMilestone() {
