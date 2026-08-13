@@ -110,7 +110,7 @@
         /* 數據看板 */
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 12px;
             margin-bottom: 20px;
         }
@@ -133,6 +133,13 @@
         .stat-val {
             font-size: 1.25rem;
             font-weight: 700;
+        }
+
+        .stat-meta {
+            margin-top: 8px;
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            letter-spacing: 0.02em;
         }
 
         .stat-val.highlight {
@@ -335,12 +342,19 @@
             justify-content: center;
             gap: 3px;
             min-height: 62px;
+            min-width: 0;
             box-sizing: border-box;
+            overflow: hidden;
             transition: transform 0.18s ease, box-shadow 0.18s ease, min-height 0.18s ease, font-size 0.18s ease;
         }
 
         .year-pill.future.has-target {
             padding: 8px 10px;
+        }
+
+        .year-pill.future.has-target .goal-block {
+            width: 100%;
+            min-width: 0;
         }
 
         /* 未來歲月膠囊 */
@@ -379,11 +393,12 @@
             z-index: 2;
             margin-bottom: 8px;
             display: grid;
-            grid-template-columns: 120px 1fr;
+            grid-template-columns: minmax(0, 120px) minmax(0, 1fr);
             align-items: center;
             justify-items: start;
             text-align: left;
             padding: 12px 14px;
+            overflow: visible;
         }
 
         .years-compact-grid.expanded-mode .year-pill:not(.expanded) {
@@ -399,6 +414,7 @@
 
         .year-pill.expanded > .goal-block {
             width: 100%;
+            min-width: 0;
             display: flex;
             flex-direction: column;
             gap: 6px;
@@ -410,6 +426,8 @@
             overflow: visible;
             text-overflow: initial;
             max-width: none;
+            overflow-wrap: anywhere;
+            word-break: break-word;
         }
 
         .year-pill.expanded .target-list {
@@ -427,10 +445,12 @@
         .target-label {
             font-size: 0.68rem;
             color: var(--accent-target-strong);
-            white-space: nowrap;
+            white-space: normal;
             overflow: hidden;
             text-overflow: ellipsis;
             max-width: 100%;
+            overflow-wrap: anywhere;
+            word-break: break-word;
         }
 
         .target-list {
@@ -465,8 +485,10 @@
         .target-item-text {
             overflow: hidden;
             text-overflow: ellipsis;
-            white-space: nowrap;
+            white-space: normal;
             max-width: calc(100% - 20px);
+            overflow-wrap: anywhere;
+            word-break: break-word;
         }
 
         .target-item .btn-delete-pill {
@@ -547,10 +569,7 @@
         <div class="stat-card">
             <div class="stat-label">已度過週數</div>
             <div class="stat-val" id="weeks-lived">-</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-label">距下個成就目標</div>
-            <div class="stat-val highlight" id="next-milestone-countdown">無目標</div>
+            <div class="stat-meta" id="weeks-remaining">還有 0 週</div>
         </div>
         <div class="stat-card">
             <div class="stat-label">人生進度 (至80歲)</div>
@@ -752,26 +771,13 @@
         const diffInDays = Math.floor((today - birthDate) / (1000 * 3600 * 24));
         const livedWeeks = Math.max(0, Math.floor(diffInDays / 7));
         const totalWeeks = TOTAL_YEARS * WEEKS_PER_YEAR;
+        const remainingWeeks = Math.max(0, totalWeeks - livedWeeks);
 
         document.getElementById("weeks-lived").textContent = livedWeeks.toLocaleString();
+        document.getElementById("weeks-remaining").textContent = `還有 ${remainingWeeks.toLocaleString()} 週`;
         document.getElementById("percentage-lived").textContent = `${((livedWeeks / totalWeeks) * 100).toFixed(1)}%`;
 
-        updateNextMilestoneCountdown(livedWeeks);
         renderLayout(livedWeeks);
-    }
-
-    function updateNextMilestoneCountdown(totalLivedWeeks) {
-        const currentAge = Math.floor(totalLivedWeeks / WEEKS_PER_YEAR);
-        const nextTarget = milestones.find(m => m.age > currentAge || (m.age === currentAge && (m.age * WEEKS_PER_YEAR) > totalLivedWeeks));
-
-        const display = document.getElementById("next-milestone-countdown");
-        if (nextTarget) {
-            const targetTotalWeeks = nextTarget.age * WEEKS_PER_YEAR;
-            const remainingWeeks = Math.max(0, targetTotalWeeks - totalLivedWeeks);
-            display.textContent = `${remainingWeeks} 週 (${nextTarget.age}歲)`;
-        } else {
-            display.textContent = "無即將到來的目標";
-        }
     }
 
     function createCurrentYearCard(year, totalLivedWeeks) {
@@ -849,13 +855,18 @@
 
             if (targetsForYear.length > 0) {
                 const isExpanded = expandedAge === year;
+                const primaryTarget = targetsForYear[0];
+                const extraCount = Math.max(0, targetsForYear.length - 1);
                 const titles = targetsForYear.map(t => t.title).join(", ");
+                const displayTitle = extraCount > 0 ? `${primaryTarget.title}（+${extraCount}）` : primaryTarget.title;
+                const visibleTargets = targetsForYear.slice(0, 1);
+
                 pill.className = `year-pill future has-target clickable ${isExpanded ? 'expanded' : ''}`;
                 pill.innerHTML = `
                     <div class="age-block">🎯 ${year} 歲</div>
                     <div class="goal-block">
-                        <span class="target-label" title="${titles}">${targetsForYear.length} 個目標</span>
-                        <ul class="target-list">${getMilestoneListMarkup(targetsForYear)}</ul>
+                        <span class="target-label" title="${titles}">${displayTitle}</span>
+                        <ul class="target-list">${getMilestoneListMarkup(visibleTargets)}</ul>
                     </div>
                 `;
                 pill.onclick = (event) => {
